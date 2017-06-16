@@ -1,0 +1,41 @@
+{
+    "name": "honeylex/accorlex",
+    "type": "project",
+    "description": "Accordia CQRS & ES integration with the Silex framework, for CMS building.",
+    "keywords": [ "accordia", "silex", "symfony", "cqrs", "framework", "event sourcing", "cms", "security" ],
+    "license": "MPL-2.0",
+    "authors": [
+        {
+            "name": "Hasham Ahmad",
+            "email": "mr.hash@gmail.com",
+            "homepage": "https://github.com/MrHash",
+            "role": "Developer"
+        },
+        {
+            "name": "Thorsten Schmitt-Rink",
+            "email": "schmittrink@gmail.com",
+            "homepage": "https://github.com/shrink0r",
+            "role": "Developer"
+        },
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:FriendsOfHoneybee/php-amqplib.git"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "code-sniffer": "phpcs --extensions=php --standard=psr2 app tests",
+        "code-sniffer-autofix": "phpcbf --standard=psr2 -d tabWidth=4 src"
+    }
+}
