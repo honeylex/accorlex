@@ -68,7 +68,7 @@ $commitSub = new Subscription("commit-sub", $inProc, $commitHandlers);
 $commitChannel = new Channel("commits", new SubscriptionMap([ $commitSub ]));
 // setup event channel
 $eventHandlers = new MessageHandlerList([ new CallbackHandler(function (EnvelopeInterface $envelope): bool {
-    echo "<h4>Received message on commit channel, but not doing anything with it atm.</h4>";
+    echo "<h4>Received message on (post-commit)event channel, but not doing anything with it atm.</h4>";
     return true;
 }) ]);
 $eventSub = new Subscription("event-sub", $inProc, $eventHandlers);
