@@ -5,15 +5,11 @@ namespace Accorlex\Article\Domain\Event;
 use Accordia\Cqrs\Aggregate\AggregateId;
 use Accordia\Cqrs\Aggregate\DomainEvent;
 use Accordia\Entity\ValueObject\Text;
-use Accordia\MessageBus\FromArrayTrait;
-use Accordia\MessageBus\ToArrayTrait;
+use Accordia\MessageBus\MessageInterface;
 use Accorlex\Article\Domain\Command\CreateArticle;
 
 final class ArticleWasCreated extends DomainEvent
 {
-    use ToArrayTrait;
-    use FromArrayTrait;
-
     /**
      * @var \Accordia\Entity\ValueObject\Text
      * @buzz::fromArray->fromNative
@@ -25,6 +21,19 @@ final class ArticleWasCreated extends DomainEvent
      * @buzz::fromArray->fromNative
      */
     private $content;
+
+    /**
+     * @param  mixed[] $nativeValues
+     * @return MessageInterface
+     */
+    public static function fromArray(array $nativeValues): MessageInterface
+    {
+        return new self(
+            AggregateId::fromNative($nativeValues['aggregateId']),
+            Text::fromNative($nativeValues['title']),
+            Text::fromNative($nativeValues['content'])
+        );
+    }
 
     /**
      * @param  CreateArticle $createArticle
@@ -53,6 +62,17 @@ final class ArticleWasCreated extends DomainEvent
     public function getContent(): Text
     {
         return $this->content;
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function toArray(): array
+    {
+        $arr = parent::toArray();
+        $arr['title'] = $this->title->toNative();
+        $arr['content'] = $this->content->toNative();
+        return $arr;
     }
 
     /**
