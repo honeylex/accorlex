@@ -2,7 +2,6 @@
 
 namespace Accorlex\Article\Controller;
 
-use Accordia\Cqrs\Aggregate\AggregateId;
 use Accorlex\Article\Domain\Command\CreateArticle;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
