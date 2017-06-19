@@ -12,7 +12,7 @@ class ArticleController
     public function read(Request $request, Application $app)
     {
         $app['message_bus']->publish(CreateArticle::fromArray([
-            'aggregateId' => AggregateId::fromNative('article-123'),
+            'aggregateId' => 'article-123',
             'title' => 'hello world!',
             'content' => 'using cqrs+es to just output this message is over engineered, but it worx :D'
         ]), 'commands');
