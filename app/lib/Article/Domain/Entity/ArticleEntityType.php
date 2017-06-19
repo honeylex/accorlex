@@ -11,7 +11,7 @@ use Accordia\Entity\ValueObject\Text;
 
 class ArticleEntityType extends EntityType
 {
-    public function __construct(string $entityName = 'Article')
+    public function __construct(string $entityName = "Article")
     {
         parent::__construct($entityName, [
             Attribute::define("id", AggregateId::class, $this),
