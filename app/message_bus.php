@@ -33,7 +33,7 @@ final class EchoPersistenceAdapter implements PersistenceAdapterInterface
     public function loadStream(StreamId $streamId, Revision $revision = null): CommitStreamInterface
     {
         echo "<h4>".__METHOD__ . " streamId: $streamId, revision: $revision</h4>";
-        return CommitStream::fromStreamId(StreamId::fromNative("123-stream"));
+        return CommitStream::fromStreamId($streamId);
     }
 
     /**
